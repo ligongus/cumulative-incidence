@@ -28,3 +28,23 @@ glimpse(flchain)
 #> $ death      <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,~
 #> $ chapter    <fct> Circulatory, Neoplasms, Circulatory, Circulatory, Circulato~
 ```
+
+# Create cumulative incidence data
+
+The `cuminc()` function in the `cmprsk` package can generate data on the
+cumulative incidence of a censored outcome, accounting for competing
+risks if necessary.
+
+``` r
+library(cmprsk)
+
+cml_inc = cuminc(
+ # explain
+ ftime   = flchain$futime, 
+ # explain
+ fstatus = flchain$death,
+ # explain
+ group   = flchain$creatinine > 1
+)
+#> 1350 cases omitted due to missing values
+```
