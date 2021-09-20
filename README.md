@@ -10,9 +10,13 @@ for JHS-HWG members who want to create cumulative incidence plots using
 printed here.
 
 ``` r
+# the flchain data are in the survival package
 library(survival)
+# tidyverse is used for convenience
 library(tidyverse)
 
+# take a look at the data, 
+# each column is printed with a few values to the right of its column name
 glimpse(flchain)
 #> Rows: 7,874
 #> Columns: 11
@@ -36,15 +40,23 @@ cumulative incidence of a censored outcome, accounting for competing
 risks if necessary.
 
 ``` r
+# loading the cmprsk package to gain access to cuminc() function
 library(cmprsk)
 
 cml_inc = cuminc(
- # explain
+ # the first argument is the failure times, i.e., the time to event variable
  ftime   = flchain$futime, 
- # explain
+ # the second argument is the status variable (1 = event, 0 = censored)
+ # (if you have competing risks, you will have values of 1, 2, 3, ... etc 
+ #  for the different event types)
  fstatus = flchain$death,
- # explain
+ # the third argument is the group variable, which will be used to create 
+ # one cumulative incidence curve per group.
  group   = flchain$creatinine > 1
 )
 #> 1350 cases omitted due to missing values
 ```
+
+Note here that we have 1350 observations as they had missing values for
+`creatinine`. You should be aware of this mechanic in case you have
+missing values in your grouping variable.
