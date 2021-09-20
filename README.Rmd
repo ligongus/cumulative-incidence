@@ -1,0 +1,25 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# cumulative-incidence
+
+The goal of the cumulative-incidence project is to provide a tutorial for JHS-HWG members who want to create cumulative incidence plots using `ggplot2`. To demonstrate the code in this repository, we use the `flchain` data from the `survival` package. These data are loaded and printed here.
+
+```{r load-and-print-flchain, message = FALSE}
+
+library(survival)
+library(tidyverse)
+
+glimpse(flchain)
+
+```
