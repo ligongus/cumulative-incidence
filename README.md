@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+#This is a line from RStudio
+
 # cumulative-incidence
 
 The goal of the cumulative-incidence project is to provide a tutorial
